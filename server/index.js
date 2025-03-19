@@ -72,20 +72,22 @@ import orderRouter from './route/order.route.js';
 const app = express();
 
 // CORS configuration
-app.use(cors({
-    credentials: true,
-    methods: ['GET', 'POST'],
-    origin: (origin, callback) => {
+app.use(cors({ origin: 'https://n-mart-olive.vercel.app' }));
+
+// app.use(cors({
+//     credentials: true,
+//     methods: ['GET', 'POST'],
+//     origin: (origin, callback) => {
         
-        const allowedOrigins = [process.env.FRONTEND_URL, 'http://localhost:5173'];
+//         const allowedOrigins = [process.env.FRONTEND_URL, 'http://localhost:5173'];
         
-        if (allowedOrigins.includes(origin) || !origin) {
-            callback(null, true); // Accept the request
-        } else {
-            callback(new Error('Not allowed by CORS')); // Reject the request
-        }
-    }
-}));
+//         if (allowedOrigins.includes(origin) || !origin) {
+//             callback(null, true); // Accept the request
+//         } else {
+//             callback(new Error('Not allowed by CORS')); // Reject the request
+//         }
+//     }
+// }));
 
 app.use(express.json());
 app.use(cookieParser());
