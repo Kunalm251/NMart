@@ -74,8 +74,11 @@ const app = express();
 // CORS configuration
 app.use(cors({
     credentials: true,
+    methods: ['GET', 'POST'],
     origin: (origin, callback) => {
+        
         const allowedOrigins = [process.env.FRONTEND_URL, 'http://localhost:5173'];
+        
         if (allowedOrigins.includes(origin) || !origin) {
             callback(null, true); // Accept the request
         } else {
