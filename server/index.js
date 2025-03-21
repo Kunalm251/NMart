@@ -1,5 +1,5 @@
 import express from 'express';
-import cors from 'cors';
+import cors from 'cors';  
 import dotenv from 'dotenv';
 dotenv.config();
 import cookieParser from 'cookie-parser';
@@ -17,20 +17,12 @@ import orderRouter from './route/order.route.js';
 
 const app = express();
 
-// // CORS configuration
-// app.use(cors({
-//     origin: process.env.FRONTEND_URL
-// }));
-
-const cors = require('cors');
+// CORS configuration
 app.use(cors({
-  origin: 'https://n-mart-olive.vercel.app', // Ensure no trailing slash here
+  origin: 'https://n-mart-olive.vercel.app', 
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
-  credentials: true, // If you're handling cookies or authentication
+  credentials: true,
 }));
-
-
-
 
 // Middleware Setup
 app.use(express.json());
@@ -59,6 +51,7 @@ app.use("/api/product", productRouter);
 app.use("/api/cart", cartRouter);
 app.use("/api/address", addressRouter);
 app.use('/api/order', orderRouter);
+
 
 // Connect to the Database and Start the Server
 connectDB().then(() => {
