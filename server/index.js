@@ -17,9 +17,16 @@ import orderRouter from './route/order.route.js';
 
 const app = express();
 
-// CORS configuration
+// // CORS configuration
+// app.use(cors({
+//     origin: process.env.FRONTEND_URL
+// }));
+
+const cors = require('cors');
 app.use(cors({
-    origin: process.env.FRONTEND_URL
+  origin: 'https://n-mart-olive.vercel.app', // Ensure no trailing slash here
+  methods: ['GET', 'POST', 'PUT', 'DELETE'],
+  credentials: true, // If you're handling cookies or authentication
 }));
 
 
